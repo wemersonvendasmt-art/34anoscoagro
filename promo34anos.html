@@ -703,24 +703,31 @@ function renderGrid() {
 }
 
 function enviarWpp(nome, preco, cod) {
-  const msg = `🏆⚽ *COAGRO 34 ANOS – GOL DE ECONOMIA!*
-
-Olha só a promoção que a Coagro preparou para você! 🎉
-
-*Ricardo*, o Craque do Campo, e *Chulapa*, o Craque de Patas, chutaram os preços pra longe e botaram essa oferta em campo especialmente para você:
-
-🔥 *${nome}*
-💰 Preço Especial: *${preco}*
-📦 Cód: ${cod}
-
-⏰ Promoção válida até *31 de julho de 2026*
-
-Não perca esse gol de economia! Venha pra Coagro ou entre em contato agora. A jogada boa é essa! 🥅✅
-
-_Coagro · Tradição que Entra em Campo Com Você_ 🟢🟡`;
-
+  // Monta a mensagem sem emojis especiais para evitar interrogacoes no WhatsApp
+  const linhas = [
+    '*COAGRO 34 ANOS - GOL DE ECONOMIA!*',
+    '',
+    'Olha so a promocao que a Coagro preparou para voce!',
+    '',
+    'Ricardo, o Craque do Campo, e Chulapa, o Craque de Patas,',
+    'chutaram os precos pra longe e botaram essa oferta em campo',
+    'especialmente para voce:',
+    '',
+    '>> ' + nome,
+    'Preco Especial: *' + preco + '*',
+    'Cod: ' + cod,
+    '',
+    'Promocao valida ate *31 de julho de 2026*',
+    '',
+    'Nao perca esse gol de economia!',
+    'Venha pra Coagro ou entre em contato agora.',
+    'A jogada boa e essa!',
+    '',
+    '_Coagro - Tradicao que Entra em Campo Com Voce_'
+  ];
+  const msg = linhas.join('\n');
   const encoded = encodeURIComponent(msg);
-  window.open(`https://wa.me/?text=${encoded}`, '_blank');
+  window.open('https://wa.me/?text=' + encoded, '_blank');
 }
 
 function filtrarPill(dept) {
